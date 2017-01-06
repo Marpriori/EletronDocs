@@ -5,40 +5,56 @@ using System.Reflection;
 namespace Electron.Docs.Tables.Entidades.Configuracao
 {
 
-    public class Empresa
+    public class Empresa : ITabela
     {
         private const string TABGERAL = "Geral";
         private const string TABENDERECO = "Endereço";
 
+        [CampoTabela]
         [CampoTela(TABGERAL, "ID")]
         public int Id { get; set; }
+
+        [CampoTabela]
         [CampoTela(TABGERAL, "CNPJ")]
         public string Cnpj { get; set; }
+
+        [CampoTabela]
         [CampoTela(TABGERAL, "Inscrição Estadual")]
         public string InscricaoEstadual { get; set; }
+
+        [CampoTabela]
         [CampoTela(TABGERAL, "Razão Social")]
         public string RazaoSocial { get; set; }
+
+        [CampoTabela]
         [CampoTela(TABGERAL, "Nome Fantasia")]
         public string Fantasia { get; set; }
 
+        [CampoTabela]
         [CampoTela(TABENDERECO, "Logradouro")]
         public string Logradouro { get; set; }
 
+        [CampoTabela]
         [CampoTela(TABENDERECO, "Número")]
         public string Numero { get; set; }
 
+        [CampoTabela]
         [CampoTela(TABENDERECO, "Complemento")]
         public string Complemento { get; set; }
 
+        [CampoTabela]
         [CampoTela(TABENDERECO, "Bairro")]
         public string Bairro { get; set; }
 
+        [CampoTabela]
         [CampoTela(TABENDERECO, "CEP")]
         public string Cep { get; set; }
 
+        [CampoTabela]
         [CampoTela(TABENDERECO, "Município")]
         public string Municipio { get; set; }
 
+        [CampoTabela]
         [CampoTela(TABENDERECO, "Estado")]
         public string Estado { get; set; }
 
@@ -72,6 +88,7 @@ namespace Electron.Docs.Tables.Entidades.Configuracao
 
             return camposTela;
         }
+
     }
 
     public class CamposTela

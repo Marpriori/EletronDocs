@@ -39,6 +39,8 @@
             this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empresaAtualComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.baseDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.validarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +85,7 @@
             // cTeToolStripMenuItem
             // 
             this.cTeToolStripMenuItem.Name = "cTeToolStripMenuItem";
-            this.cTeToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+            this.cTeToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.cTeToolStripMenuItem.Text = "CTe";
             // 
             // cadastrosToolStripMenuItem
@@ -110,7 +112,8 @@
             // configuraçãoToolStripMenuItem
             // 
             this.configuraçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.empresaToolStripMenuItem});
+            this.empresaToolStripMenuItem,
+            this.baseDeDadosToolStripMenuItem});
             this.configuraçãoToolStripMenuItem.Name = "configuraçãoToolStripMenuItem";
             this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(91, 23);
             this.configuraçãoToolStripMenuItem.Text = "Configuração";
@@ -118,7 +121,7 @@
             // empresaToolStripMenuItem
             // 
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.empresaToolStripMenuItem.Text = "Empresas";
             this.empresaToolStripMenuItem.Click += new System.EventHandler(this.empresaToolStripMenuItem_Click);
             // 
@@ -133,6 +136,21 @@
             this.empresaAtualComboBox.Size = new System.Drawing.Size(121, 23);
             this.empresaAtualComboBox.Sorted = true;
             this.empresaAtualComboBox.Click += new System.EventHandler(this.empresaAtualComboBox_Click);
+            // 
+            // baseDeDadosToolStripMenuItem
+            // 
+            this.baseDeDadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.validarToolStripMenuItem});
+            this.baseDeDadosToolStripMenuItem.Name = "baseDeDadosToolStripMenuItem";
+            this.baseDeDadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.baseDeDadosToolStripMenuItem.Text = "Base de dados";
+            // 
+            // validarToolStripMenuItem
+            // 
+            this.validarToolStripMenuItem.Name = "validarToolStripMenuItem";
+            this.validarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.validarToolStripMenuItem.Text = "Validar";
+            this.validarToolStripMenuItem.Click += new System.EventHandler(this.validarToolStripMenuItem_Click);
             // 
             // TelaInicial
             // 
@@ -166,6 +184,8 @@
         private System.Windows.Forms.ToolStripMenuItem empresaToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox empresaAtualComboBox;
         private System.Windows.Forms.ToolStripStatusLabel toolStatusDatabase;
+        private System.Windows.Forms.ToolStripMenuItem baseDeDadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem validarToolStripMenuItem;
     }
 }
 

@@ -38,5 +38,18 @@ namespace Eletron
             var empresaCadastro = new EmpresaCadastro();
             empresaCadastro.ShowDialog();
         }
+
+        private void validarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var db = new DBhelperClass();
+                db.ValidarBaseDados();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
     }
 }
