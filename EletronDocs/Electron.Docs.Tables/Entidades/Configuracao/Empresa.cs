@@ -5,14 +5,10 @@ using System.Reflection;
 namespace Electron.Docs.Tables.Entidades.Configuracao
 {
 
-    public class Empresa : ITabela
+    public class Empresa : Tabela
     {
         private const string TABGERAL = "Geral";
         private const string TABENDERECO = "Endereço";
-
-        [CampoTabela]
-        [CampoTela(TABGERAL, "ID")]
-        public int Id { get; set; }
 
         [CampoTabela]
         [CampoTela(TABGERAL, "CNPJ")]
@@ -58,9 +54,11 @@ namespace Electron.Docs.Tables.Entidades.Configuracao
         [CampoTela(TABENDERECO, "Estado")]
         public string Estado { get; set; }
 
-        public PropertyInfo[] GetCampos()
+
+
+        public void SetPropertyValue(string propertyName, object value)
         {
-            return typeof(Empresa).GetProperties();
+            typeof(Empresa).GetProperty(propertyName).SetValue(this, value);
         }
 
         public List<CamposTela> GetDescricao()

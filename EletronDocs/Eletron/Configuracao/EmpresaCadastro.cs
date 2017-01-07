@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Electron.Docs.Tables.Designer;
+using Eletron.Designer.Campos;
 
 namespace Eletron.Configuracao
 {
     public partial class EmpresaCadastro : Form
     {
+        Empresa empresa;
         public EmpresaCadastro()
         {
             InitializeComponent();
@@ -22,8 +24,8 @@ namespace Eletron.Configuracao
 
         public void GerarCampos()
         {
-            var campos = new Empresa().GetDescricao();
-
+            empresa = new Empresa();
+            var campos = empresa.GetDescricao();
             var abas = campos.Select(c => c.Atributo.Aba).Distinct();
 
             var abaIndex = 0;
@@ -53,9 +55,10 @@ namespace Eletron.Configuracao
 
                     tabIndex++;
 
-                    var txtCampo = new TextBox();
+                    var txtCampo = new FieldDesktopTextBox();
                     txtCampo.Location = new System.Drawing.Point(10, 25 + (campoIndex * 40));
                     txtCampo.Name = "field" + campo.Nome;
+                    txtCampo.Tag = campo.Atributo.Rotulo;
                     txtCampo.Size = new System.Drawing.Size(493, 20);
                     txtCampo.TabIndex = 1;
                     tabPage.Controls.Add(txtCampo);
@@ -68,6 +71,40 @@ namespace Eletron.Configuracao
                 abaIndex++;
             }
 
+
+        }
+
+        private void buttonSalvar_Click(object sender, EventArgs e)
+        {
+            foreach (TabPage tab in this.tabControl1.TabPages)
+            {
+                var campos = tab.Controls.Cast<object>().Where(c => c is IFieldDesktop).ToList();
+
+                foreach (var campo in campos)
+                {
+                    if ((campo as IFieldDesktop).Obrigatorio)
+                    {
+                        var control = campo as Control;
+                        if (string.IsNullOrWhiteSpace(control.Text))
+                        {
+                            MessageBox.Show(string.Format("Campo '{0}' obrigatório.", control.Tag));
+                            return;
+                        }
+                    }
+
+                    if(campo is FieldDesktopTextBox){
+
+                        var campoTraduzido = campo as FieldDesktopTextBox;
+
+                        empresa.SetPropertyValue(campoTraduzido.Name.Replace("field",""), campoTraduzido.Text);
+
+                    }
+
+                }
+
+            }
+
+            empresa.Save();
 
         }
     }

@@ -38,9 +38,9 @@
             this.operaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empresaAtualComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.baseDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.empresaAtualComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             // cTeToolStripMenuItem
             // 
             this.cTeToolStripMenuItem.Name = "cTeToolStripMenuItem";
-            this.cTeToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.cTeToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.cTeToolStripMenuItem.Text = "CTe";
             // 
             // cadastrosToolStripMenuItem
@@ -121,36 +121,37 @@
             // empresaToolStripMenuItem
             // 
             this.empresaToolStripMenuItem.Name = "empresaToolStripMenuItem";
-            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.empresaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.empresaToolStripMenuItem.Text = "Empresas";
             this.empresaToolStripMenuItem.Click += new System.EventHandler(this.empresaToolStripMenuItem_Click);
-            // 
-            // empresaAtualComboBox
-            // 
-            this.empresaAtualComboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.empresaAtualComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaAtualComboBox.Items.AddRange(new object[] {
-            "EMPRESA 2 ME",
-            "GUSTAVO PRIORI ME"});
-            this.empresaAtualComboBox.Name = "empresaAtualComboBox";
-            this.empresaAtualComboBox.Size = new System.Drawing.Size(121, 23);
-            this.empresaAtualComboBox.Sorted = true;
-            this.empresaAtualComboBox.Click += new System.EventHandler(this.empresaAtualComboBox_Click);
             // 
             // baseDeDadosToolStripMenuItem
             // 
             this.baseDeDadosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.validarToolStripMenuItem});
             this.baseDeDadosToolStripMenuItem.Name = "baseDeDadosToolStripMenuItem";
-            this.baseDeDadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.baseDeDadosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.baseDeDadosToolStripMenuItem.Text = "Base de dados";
             // 
             // validarToolStripMenuItem
             // 
             this.validarToolStripMenuItem.Name = "validarToolStripMenuItem";
-            this.validarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.validarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.validarToolStripMenuItem.Text = "Validar";
             this.validarToolStripMenuItem.Click += new System.EventHandler(this.validarToolStripMenuItem_Click);
+            // 
+            // empresaAtualComboBox
+            // 
+            this.empresaAtualComboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.empresaAtualComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.empresaAtualComboBox.DropDownWidth = 170;
+            this.empresaAtualComboBox.Items.AddRange(new object[] {
+            "EMPRESA 2 ME",
+            "GUSTAVO PRIORI ME"});
+            this.empresaAtualComboBox.Name = "empresaAtualComboBox";
+            this.empresaAtualComboBox.Size = new System.Drawing.Size(180, 23);
+            this.empresaAtualComboBox.Sorted = true;
+            this.empresaAtualComboBox.Click += new System.EventHandler(this.empresaAtualComboBox_Click);
             // 
             // TelaInicial
             // 

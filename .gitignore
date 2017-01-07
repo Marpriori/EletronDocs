@@ -34,3 +34,4 @@
 EletronDocs/packages/
 bin/
 obj/
+dist/

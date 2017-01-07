@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\dist\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -58,6 +58,10 @@
     <Compile Include="Configuracao\EmpresasLista.Designer.cs">
       <DependentUpon>EmpresasLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Designer\Campos\FieldDesktopTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Designer\Campos\IFieldDesktop.cs" />
     <Compile Include="TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
