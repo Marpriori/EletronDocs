@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Electron.Docs.Tables.Designer;
 using Eletron.Designer.Campos;
+using Electron.Docs.Tables.Designer.Atributos;
 
 namespace Eletron.Configuracao
 {
@@ -44,17 +45,16 @@ namespace Eletron.Configuracao
                 this.tabControl1.Controls.Add(tabPage);
 
                 int tamanhoTotal = this.tabControl1.Size.Width - 20;
-                int tamanhoUnidade = tamanhoTotal / 12;
 
                 int tabIndex = 0;
                 int linhaIndex = 0;
                 int totalSizeLinha = 0;
-                foreach (var campo in campos.Where(c=> c.Atributo.Aba == aba))
+                foreach (var campo in campos.Where(c => c.Atributo.Aba == aba))
                 {
                     totalSizeLinha += 10;
-                    int tamanhoCampo = ((int)campo.Atributo.Tamanho) * tamanhoUnidade;
+                    int tamanhoCampo = campo.Atributo.Tamanho;
 
-                    if ((totalSizeLinha+ tamanhoCampo) >= (tamanhoTotal + 10))
+                    if ((totalSizeLinha + tamanhoCampo) >= (tamanhoTotal))
                     {
                         linhaIndex++;
                         totalSizeLinha = 10;
@@ -71,13 +71,7 @@ namespace Eletron.Configuracao
 
                     tabIndex++;
 
-                    var txtCampo = new FieldDesktopTextBox();
-                    txtCampo.Location = new System.Drawing.Point(totalSizeLinha, 25 + (linhaIndex * 40));
-                    txtCampo.Name = "field" + campo.Nome;
-                    txtCampo.Tag = campo.Atributo.Rotulo;
-                    
-                    txtCampo.Size = new System.Drawing.Size(tamanhoCampo, 20);
-                    txtCampo.TabIndex = 1;
+                    var txtCampo = GerarCampo(linhaIndex, totalSizeLinha, campo, tamanhoCampo);
                     tabPage.Controls.Add(txtCampo);
                     totalSizeLinha += tamanhoCampo;
                     if (totalSizeLinha >= tamanhoTotal)
@@ -95,6 +89,21 @@ namespace Eletron.Configuracao
             }
 
 
+        }
+
+        private Control GerarCampo(int linhaIndex, int totalSizeLinha, CamposTela campo, int tamanhoCampo)
+        {
+            Control txtCampo;
+            if (!string.IsNullOrWhiteSpace(campo.Atributo.Mascara))
+                txtCampo = new FieldDesktopMaskedTextBox(campo.Atributo.Mascara);
+            else
+                txtCampo = new FieldDesktopTextBox();
+            txtCampo.Location = new System.Drawing.Point(totalSizeLinha, 25 + (linhaIndex * 40));
+            txtCampo.Name = "field" + campo.Nome;
+            txtCampo.Tag = campo.Atributo.Rotulo;
+            txtCampo.Size = new System.Drawing.Size(tamanhoCampo, 20);
+            txtCampo.TabIndex = 1;
+            return txtCampo;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
@@ -115,11 +124,12 @@ namespace Eletron.Configuracao
                         }
                     }
 
-                    if(campo is FieldDesktopTextBox){
+                    if (campo is FieldDesktopTextBox)
+                    {
 
                         var campoTraduzido = campo as FieldDesktopTextBox;
 
-                        empresa.SetPropertyValue(campoTraduzido.Name.Replace("field",""), campoTraduzido.Text);
+                        empresa.SetPropertyValue(campoTraduzido.Name.Replace("field", ""), campoTraduzido.Text);
 
                     }
 

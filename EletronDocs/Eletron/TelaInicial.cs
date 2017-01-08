@@ -18,6 +18,12 @@ namespace Eletron
         {
             InitializeComponent();
             VerificarDataBase();
+            ListaEmpresas();
+        }
+
+        private void ListaEmpresas()
+        {
+            //empresaComboBox.Items.AddRange()
         }
 
         private void VerificarDataBase()

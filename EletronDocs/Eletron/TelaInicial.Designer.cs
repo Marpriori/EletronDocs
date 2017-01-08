@@ -40,7 +40,7 @@
             this.empresaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.validarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empresaAtualComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.empresaComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             this.documentosToolStripMenuItem,
             this.cadastrosToolStripMenuItem,
             this.configuraçãoToolStripMenuItem,
-            this.empresaAtualComboBox});
+            this.empresaComboBox});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(694, 27);
@@ -140,18 +140,18 @@
             this.validarToolStripMenuItem.Text = "Validar";
             this.validarToolStripMenuItem.Click += new System.EventHandler(this.validarToolStripMenuItem_Click);
             // 
-            // empresaAtualComboBox
+            // empresaComboBox
             // 
-            this.empresaAtualComboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.empresaAtualComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empresaAtualComboBox.DropDownWidth = 170;
-            this.empresaAtualComboBox.Items.AddRange(new object[] {
+            this.empresaComboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.empresaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.empresaComboBox.DropDownWidth = 170;
+            this.empresaComboBox.Items.AddRange(new object[] {
             "EMPRESA 2 ME",
             "GUSTAVO PRIORI ME"});
-            this.empresaAtualComboBox.Name = "empresaAtualComboBox";
-            this.empresaAtualComboBox.Size = new System.Drawing.Size(180, 23);
-            this.empresaAtualComboBox.Sorted = true;
-            this.empresaAtualComboBox.Click += new System.EventHandler(this.empresaAtualComboBox_Click);
+            this.empresaComboBox.Name = "empresaComboBox";
+            this.empresaComboBox.Size = new System.Drawing.Size(180, 23);
+            this.empresaComboBox.Sorted = true;
+            this.empresaComboBox.Click += new System.EventHandler(this.empresaAtualComboBox_Click);
             // 
             // TelaInicial
             // 
@@ -183,7 +183,7 @@
         private System.Windows.Forms.ToolStripMenuItem operaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empresaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox empresaAtualComboBox;
+        private System.Windows.Forms.ToolStripComboBox empresaComboBox;
         private System.Windows.Forms.ToolStripStatusLabel toolStatusDatabase;
         private System.Windows.Forms.ToolStripMenuItem baseDeDadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem validarToolStripMenuItem;

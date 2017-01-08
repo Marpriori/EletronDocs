@@ -46,7 +46,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(581, 387);
+            this.tabControl1.Size = new System.Drawing.Size(481, 387);
             this.tabControl1.TabIndex = 0;
             // 
             // panel1
@@ -59,13 +59,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 25);
+            this.panel1.Size = new System.Drawing.Size(484, 25);
             this.panel1.TabIndex = 1;
             // 
             // buttonCancelar
             // 
             this.buttonCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancelar.Location = new System.Drawing.Point(516, 0);
+            this.buttonCancelar.Location = new System.Drawing.Point(416, 0);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(61, 23);
             this.buttonCancelar.TabIndex = 4;
@@ -75,7 +75,7 @@
             // buttonSalvar
             // 
             this.buttonSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSalvar.Location = new System.Drawing.Point(449, 0);
+            this.buttonSalvar.Location = new System.Drawing.Point(349, 0);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(61, 23);
             this.buttonSalvar.TabIndex = 3;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 411);
+            this.ClientSize = new System.Drawing.Size(484, 411);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.Name = "EmpresaCadastro";
