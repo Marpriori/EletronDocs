@@ -31,7 +31,7 @@ namespace Electron.Docs.Tables.Entidades.Configuracao
         public string Logradouro { get; set; }
 
         [CampoTabela]
-        [CampoTela(TABENDERECO, "Número")]
+        [CampoTela(TABENDERECO, "Número", Tamanho = TamanhoCampo.Tamanho3)]
         public string Numero { get; set; }
 
         [CampoTabela]
@@ -47,11 +47,11 @@ namespace Electron.Docs.Tables.Entidades.Configuracao
         public string Cep { get; set; }
 
         [CampoTabela]
-        [CampoTela(TABENDERECO, "Município")]
+        [CampoTela(TABENDERECO, "Município", Tamanho =TamanhoCampo.Tamanho6)]
         public string Municipio { get; set; }
 
         [CampoTabela]
-        [CampoTela(TABENDERECO, "Estado")]
+        [CampoTela(TABENDERECO, "Estado", Tamanho =TamanhoCampo.Tamanho6)]
         public string Estado { get; set; }
 
 

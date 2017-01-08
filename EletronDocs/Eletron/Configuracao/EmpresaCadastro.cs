@@ -24,6 +24,7 @@ namespace Eletron.Configuracao
 
         public void GerarCampos()
         {
+
             empresa = new Empresa();
             var campos = empresa.GetDescricao();
             var abas = campos.Select(c => c.Atributo.Aba).Distinct();
@@ -40,15 +41,30 @@ namespace Eletron.Configuracao
                 tabPage.TabIndex = abaIndex;
                 tabPage.Text = aba;
                 tabPage.UseVisualStyleBackColor = true;
+                this.tabControl1.Controls.Add(tabPage);
+
+                int tamanhoTotal = this.tabControl1.Size.Width - 20;
+                int tamanhoUnidade = tamanhoTotal / 12;
 
                 int tabIndex = 0;
-                int campoIndex = 0;
+                int linhaIndex = 0;
+                int totalSizeLinha = 0;
                 foreach (var campo in campos.Where(c=> c.Atributo.Aba == aba))
                 {
+                    totalSizeLinha += 10;
+                    int tamanhoCampo = ((int)campo.Atributo.Tamanho) * tamanhoUnidade;
+
+                    if ((totalSizeLinha+ tamanhoCampo) >= (tamanhoTotal + 10))
+                    {
+                        linhaIndex++;
+                        totalSizeLinha = 10;
+
+                    }
+
                     var label = new Label();
                     tabPage.Controls.Add(label);
                     label.AutoSize = true;
-                    label.Location = new System.Drawing.Point(10, 10 + (campoIndex * 40));
+                    label.Location = new System.Drawing.Point(totalSizeLinha, 10 + (linhaIndex * 40));
                     label.Name = "label" + campo.Nome;
                     label.TabIndex = tabIndex;
                     label.Text = campo.Atributo.Rotulo;
@@ -56,17 +72,24 @@ namespace Eletron.Configuracao
                     tabIndex++;
 
                     var txtCampo = new FieldDesktopTextBox();
-                    txtCampo.Location = new System.Drawing.Point(10, 25 + (campoIndex * 40));
+                    txtCampo.Location = new System.Drawing.Point(totalSizeLinha, 25 + (linhaIndex * 40));
                     txtCampo.Name = "field" + campo.Nome;
                     txtCampo.Tag = campo.Atributo.Rotulo;
-                    txtCampo.Size = new System.Drawing.Size(493, 20);
+                    
+                    txtCampo.Size = new System.Drawing.Size(tamanhoCampo, 20);
                     txtCampo.TabIndex = 1;
                     tabPage.Controls.Add(txtCampo);
-                    campoIndex++;
+                    totalSizeLinha += tamanhoCampo;
+                    if (totalSizeLinha >= tamanhoTotal)
+                    {
+                        linhaIndex++;
+                        totalSizeLinha = 0;
+
+                    }
                 }
 
 
-                this.tabControl1.Controls.Add(tabPage);
+
 
                 abaIndex++;
             }
