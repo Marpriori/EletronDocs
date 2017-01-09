@@ -116,11 +116,14 @@ namespace Eletron.Configuracao
                         }
                     }
 
-                    if (!(campo is FieldDesktopTextBox)) continue;
 
-                    var campoTraduzido = campo as FieldDesktopTextBox;
+                    if (campo is FieldDesktopTextBox || campo is FieldDesktopMaskedTextBox)
+                    {
+                        var campoTraduzido = campo as Control;
 
-                    tabela.SetPropertyValue(campoTraduzido.Name.Replace("field", ""), campoTraduzido.Text);
+
+                        tabela.SetPropertyValue(campoTraduzido.Name.Replace("field", ""), campoTraduzido.Text);
+                    }
                 }
             }
             tabela.Save();
