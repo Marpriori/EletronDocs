@@ -1,6 +1,6 @@
 ﻿namespace Eletron.Configuracao
 {
-    partial class EmpresaCadastro
+    partial class TelaCadastro
     {
         /// <summary>
         /// Required designer variable.

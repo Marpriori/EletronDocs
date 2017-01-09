@@ -1,12 +1,7 @@
 ﻿using Electron.Docs.Tables.Designer;
 using Electron.Docs.Tables.Designer.Atributos;
-using Electron.Docs.Tables.Entidades.Configuracao;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Electron.Docs.Tables.Entidades
 {
@@ -15,43 +10,47 @@ namespace Electron.Docs.Tables.Entidades
         [CampoTabela]
         public int Id { get; set; }
         
-        protected DBhelperClass db = new DBhelperClass();
+        protected DBhelperClass Db = new DBhelperClass();
 
         public void Save()
         {
-            db.SalvarTabela(this);
+            Db.SalvarTabela(this);
         }
 
         public PropertyInfo[] GetProperties()
         {
-            return this.GetType().GetProperties();
+            return GetType().GetProperties();
         }
 
         public void SetPropertyValue(string propertyName, object value)
         {
-            typeof(Empresa).GetProperty(propertyName).SetValue(this, value);
+            GetType().GetProperty(propertyName).SetValue(this, value);
         }
 
-        public List<CamposTela> GetDescricao()
+        public object GetPropertyValue(string propertyName)
+        {
+            return GetType().GetProperty(propertyName).GetValue(this);
+        }
+
+        public List<CamposTela> BuscarCamposTela()
         {
             var camposTela = new List<CamposTela>();
 
 
-            foreach (PropertyInfo prop in GetProperties())
+            foreach (var prop in GetProperties())
             {
-                object[] attrs = prop.GetCustomAttributes(true);
-                foreach (object attr in attrs)
+                var attrs = prop.GetCustomAttributes(true);
+                foreach (var attr in attrs)
                 {
-                    CampoTelaAttribute authAttr = attr as CampoTelaAttribute;
-                    if (authAttr != null)
+                    var authAttr = attr as CampoTelaAttribute;
+                    if (authAttr == null) continue;
+
+                    var propName = prop.Name;
+                    camposTela.Add(new CamposTela
                     {
-                        string propName = prop.Name;
-                        camposTela.Add(new CamposTela()
-                        {
-                            Nome = propName,
-                            Atributo = authAttr
-                        });
-                    }
+                        Nome = propName,
+                        Atributo = authAttr
+                    });
                 }
             }
 
@@ -60,8 +59,14 @@ namespace Electron.Docs.Tables.Entidades
 
         public List<T> GetAll()
         {
-            return db.GetAll<T>();
+            return Db.GetAll<T>();
         }
-   
+
+
+
+        //public void SetPropertyValue(string p1, string p2)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuracao\EmpresaCadastro.cs">
+    <Compile Include="Configuracao\TelaCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Configuracao\EmpresaCadastro.Designer.cs">
-      <DependentUpon>EmpresaCadastro.cs</DependentUpon>
+    <Compile Include="Configuracao\TelaCadastro.Designer.cs">
+      <DependentUpon>TelaCadastro.cs</DependentUpon>
     </Compile>
     <Compile Include="Configuracao\EmpresasLista.cs">
       <SubType>Form</SubType>
@@ -73,8 +73,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Configuracao\EmpresaCadastro.resx">
-      <DependentUpon>EmpresaCadastro.cs</DependentUpon>
+    <EmbeddedResource Include="Configuracao\TelaCadastro.resx">
+      <DependentUpon>TelaCadastro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configuracao\EmpresasLista.resx">
       <DependentUpon>EmpresasLista.cs</DependentUpon>

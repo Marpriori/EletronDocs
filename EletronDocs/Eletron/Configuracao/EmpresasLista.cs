@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Electron.Docs.Tables.Entidades.Configuracao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,24 @@ namespace Eletron.Configuracao
         public EmpresasLista()
         {
             InitializeComponent();
+            ListarEmpresas();
+        }
+
+        private void ListarEmpresas()
+        {
+            dataGridView1.DataSource = new Empresa().GetAll();
+            dataGridView1.Refresh();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var empresaSelecionada = dataGridView1.CurrentRow.DataBoundItem as Empresa;
+            if (empresaSelecionada != null)
+            {
+                var telaEditar = new TelaCadastro(empresaSelecionada);
+                telaEditar.ShowDialog();
+            }
+
         }
     }
 }

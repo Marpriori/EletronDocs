@@ -25,7 +25,9 @@ namespace Eletron
         private void ListaEmpresas()
         {
             var empresas = new Empresa().GetAll();
-            //empresaComboBox.Items.AddRange()
+            empresaComboBox.Items.AddRange(empresas.ToArray());
+            empresaComboBox.ComboBox.DisplayMember = "RazaoSocial";
+            empresaComboBox.ComboBox.ValueMember = "ID";
         }
 
         private void VerificarDataBase()
@@ -43,7 +45,7 @@ namespace Eletron
 
         private void empresaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var empresaCadastro = new EmpresaCadastro();
+            var empresaCadastro = new EmpresasLista();
             empresaCadastro.ShowDialog();
         }
 

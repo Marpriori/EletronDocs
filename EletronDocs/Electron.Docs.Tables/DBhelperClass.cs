@@ -147,7 +147,7 @@ namespace Electron.Docs.Tables
                         var valor = row[campo.Name.ToUpperInvariant()];
                         if(valor is DBNull) valor = null;
                         
-                        campo.SetValue(registro, Convert.ChangeType(valor,campo.GetType()));
+                        campo.SetValue(registro, Convert.ChangeType(valor,campo.PropertyType));
                     }
                     retorno.Add(registro);
                 }

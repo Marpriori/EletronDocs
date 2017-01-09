@@ -1,58 +1,52 @@
-﻿using Electron.Docs.Tables.Entidades.Configuracao;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Electron.Docs.Tables.Designer;
 using Eletron.Designer.Campos;
-using Electron.Docs.Tables.Designer.Atributos;
+using Electron.Docs.Tables.Entidades;
 
 namespace Eletron.Configuracao
 {
-    public partial class EmpresaCadastro : Form
+    public partial class TelaCadastro : Form
     {
-        Empresa empresa;
-        public EmpresaCadastro()
+        readonly ITabela tabela;
+        public TelaCadastro(ITabela tabela)
         {
             InitializeComponent();
+            this.tabela = tabela;
             GerarCampos();
         }
 
         public void GerarCampos()
         {
-
-            empresa = new Empresa();
-            var campos = empresa.GetDescricao();
+            var campos = tabela.BuscarCamposTela();
             var abas = campos.Select(c => c.Atributo.Aba).Distinct();
 
             var abaIndex = 0;
             foreach (var aba in abas)
             {
-                var tabPage = new TabPage();
-                tabPage.AutoScroll = true;
-                tabPage.Location = new System.Drawing.Point(4, 22);
-                tabPage.Name = "tab" + aba.RemoveSpecialCharacters();
-                tabPage.Padding = new System.Windows.Forms.Padding(3);
-                tabPage.Size = new System.Drawing.Size(325, 228);
-                tabPage.TabIndex = abaIndex;
-                tabPage.Text = aba;
-                tabPage.UseVisualStyleBackColor = true;
-                this.tabControl1.Controls.Add(tabPage);
+                var tabPage = new TabPage
+                {
+                    AutoScroll = true,
+                    Location = new System.Drawing.Point(4, 22),
+                    Name = "tab" + aba.RemoveSpecialCharacters(),
+                    Padding = new Padding(3),
+                    Size = new System.Drawing.Size(325, 228),
+                    TabIndex = abaIndex,
+                    Text = aba,
+                    UseVisualStyleBackColor = true
+                };
+                tabControl1.Controls.Add(tabPage);
 
-                int tamanhoTotal = this.tabControl1.Size.Width - 20;
+                var tamanhoTotal = tabControl1.Size.Width - 20;
 
-                int tabIndex = 0;
-                int linhaIndex = 0;
-                int totalSizeLinha = 0;
+                var tabIndex = 0;
+                var linhaIndex = 0;
+                var totalSizeLinha = 0;
                 foreach (var campo in campos.Where(c => c.Atributo.Aba == aba))
                 {
                     totalSizeLinha += 10;
-                    int tamanhoCampo = campo.Atributo.Tamanho;
+                    var tamanhoCampo = campo.Atributo.Tamanho;
 
                     if ((totalSizeLinha + tamanhoCampo) >= (tamanhoTotal))
                     {
@@ -78,12 +72,8 @@ namespace Eletron.Configuracao
                     {
                         linhaIndex++;
                         totalSizeLinha = 0;
-
                     }
                 }
-
-
-
 
                 abaIndex++;
             }
@@ -103,42 +93,37 @@ namespace Eletron.Configuracao
             txtCampo.Tag = campo.Atributo.Rotulo;
             txtCampo.Size = new System.Drawing.Size(tamanhoCampo, 20);
             txtCampo.TabIndex = 1;
+            txtCampo.Text = tabela.GetPropertyValue(campo.Nome) as string;
             return txtCampo;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            foreach (TabPage tab in this.tabControl1.TabPages)
+            foreach (TabPage tab in tabControl1.TabPages)
             {
                 var campos = tab.Controls.Cast<object>().Where(c => c is IFieldDesktop).ToList();
 
                 foreach (var campo in campos)
                 {
-                    if ((campo as IFieldDesktop).Obrigatorio)
+                    var fieldDesktop = campo as IFieldDesktop;
+                    if (fieldDesktop != null && fieldDesktop.Obrigatorio)
                     {
                         var control = campo as Control;
-                        if (string.IsNullOrWhiteSpace(control.Text))
+                        if (control != null && string.IsNullOrWhiteSpace(control.Text))
                         {
                             MessageBox.Show(string.Format("Campo '{0}' obrigatório.", control.Tag));
                             return;
                         }
                     }
 
-                    if (campo is FieldDesktopTextBox)
-                    {
+                    if (!(campo is FieldDesktopTextBox)) continue;
 
-                        var campoTraduzido = campo as FieldDesktopTextBox;
+                    var campoTraduzido = campo as FieldDesktopTextBox;
 
-                        empresa.SetPropertyValue(campoTraduzido.Name.Replace("field", ""), campoTraduzido.Text);
-
-                    }
-
+                    tabela.SetPropertyValue(campoTraduzido.Name.Replace("field", ""), campoTraduzido.Text);
                 }
-
             }
-
-            empresa.Save();
-
+            tabela.Save();
         }
     }
 }

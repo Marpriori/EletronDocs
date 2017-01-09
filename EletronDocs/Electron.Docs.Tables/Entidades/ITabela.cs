@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Electron.Docs.Tables.Designer;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Electron.Docs.Tables.Entidades
 {
-    interface ITabela
+    public interface ITabela
     {
+        List<CamposTela> BuscarCamposTela();
+
+        void SetPropertyValue(string propertyName, object value);
+        object GetPropertyValue(string propertyName);
+        void Save();
     }
 }
