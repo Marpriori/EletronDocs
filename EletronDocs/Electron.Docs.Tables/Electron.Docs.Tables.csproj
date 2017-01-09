@@ -48,6 +48,7 @@
     <Compile Include="DBhelperClass.cs" />
     <Compile Include="Designer\Atributos\CampoTabelaAttribute.cs" />
     <Compile Include="Designer\Atributos\CampoTelaAttribute.cs" />
+    <Compile Include="Designer\CamposTela.cs" />
     <Compile Include="Designer\Extensions.cs" />
     <Compile Include="Entidades\Configuracao\Empresa.cs" />
     <Compile Include="Entidades\Configuracao\Empresa.Properties.cs" />

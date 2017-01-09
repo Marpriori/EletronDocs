@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Electron.Docs.Tables.Entidades.Configuracao
 {
-    public partial class Empresa : Tabela
+    public partial class Empresa : Tabela<Empresa>
     {
         private const string TABGERAL = "Geral";
         private const string TABENDERECO = "Endereço";

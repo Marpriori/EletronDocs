@@ -6,34 +6,50 @@ using System.Threading.Tasks;
 
 namespace Electron.Docs.Tables.Entidades.Listas
 {
-    public enum Estado
+    public class ItemLista
     {
-        AC = 12,
-        AL = 27,
-        AM = 13,
-        AP = 16,
-        BA = 29,
-        CE = 23,
-        DF = 53,
-        ES = 32,
-        GO = 52,
-        MA = 21,
-        MG = 31,
-        MS = 50,
-        MT = 51,
-        PA = 15,
-        PB = 25,
-        PE = 26,
-        PI = 22,
-        PR = 41,
-        RJ = 33,
-        RN = 24,
-        RO = 11,
-        RR = 14,
-        RS = 43,
-        SC = 42,
-        SE = 28,
-        SP = 35,
-        TO = 17
+        public object Valor { get; set; }
+        public string Descricao { get; set; }
+
+        public ItemLista(object valor, string descricao)
+        {
+            Valor = valor;
+            Descricao = descricao;
+
+        }
+    }
+
+    public class Listas
+    {
+        public static List<ItemLista> Estados = new List<ItemLista>(){
+            new ItemLista(12, "AC"),
+            new ItemLista(27, "AL"),
+            new ItemLista(13, "AM"),
+            new ItemLista(16, "AP"),
+            new ItemLista(29, "BA"),
+            new ItemLista(23, "CE"),
+            new ItemLista(53, "DF"),
+            new ItemLista(32, "ES"),
+            new ItemLista(52, "GO"),
+            new ItemLista(21, "MA"),
+            new ItemLista(31, "MG"),
+            new ItemLista(50, "MS"),
+            new ItemLista(51, "MT"),
+            new ItemLista(15, "PA"),
+            new ItemLista(25, "PB"),
+            new ItemLista(26, "PE"),
+            new ItemLista(22, "PI"),
+            new ItemLista(41, "PR"),
+            new ItemLista(33, "RJ"),
+            new ItemLista(24, "RN"),
+            new ItemLista(11, "RO"),
+            new ItemLista(14, "RR"),
+            new ItemLista(43, "RS"),
+            new ItemLista(42, "SC"),
+            new ItemLista(28, "SE"),
+            new ItemLista(35, "SP"),
+            new ItemLista(17, "TO")
+        };
+
     }
 }

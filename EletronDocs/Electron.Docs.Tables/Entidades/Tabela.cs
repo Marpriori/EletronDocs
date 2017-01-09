@@ -1,4 +1,6 @@
-﻿using Electron.Docs.Tables.Designer.Atributos;
+﻿using Electron.Docs.Tables.Designer;
+using Electron.Docs.Tables.Designer.Atributos;
+using Electron.Docs.Tables.Entidades.Configuracao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +10,19 @@ using System.Threading.Tasks;
 
 namespace Electron.Docs.Tables.Entidades
 {
-    public abstract class Tabela : ITabela
+    public abstract class Tabela<T> : ITabela where T : new()
     {
         [CampoTabela]
         public int Id { get; set; }
+        
+        protected DBhelperClass db = new DBhelperClass();
 
         public void Save()
         {
-            DBhelperClass db = new DBhelperClass();
             db.SalvarTabela(this);
         }
 
-        public PropertyInfo[] GetCampos()
+        public PropertyInfo[] GetProperties()
         {
             return this.GetType().GetProperties();
         }
@@ -34,7 +37,7 @@ namespace Electron.Docs.Tables.Entidades
             var camposTela = new List<CamposTela>();
 
 
-            foreach (PropertyInfo prop in GetCampos())
+            foreach (PropertyInfo prop in GetProperties())
             {
                 object[] attrs = prop.GetCustomAttributes(true);
                 foreach (object attr in attrs)
@@ -55,5 +58,10 @@ namespace Electron.Docs.Tables.Entidades
             return camposTela;
         }
 
+        public List<T> GetAll()
+        {
+            return db.GetAll<T>();
+        }
+   
     }
 }

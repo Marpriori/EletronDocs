@@ -129,13 +129,37 @@ namespace Electron.Docs.Tables
             return propriedades.ToArray();
         }
 
+        internal List<T> GetAll<T>() where T : new()
+        {
+            var retorno = new List<T>();
 
+            string nomeTabela = typeof(T).Name.ToUpperInvariant();
+            PropertyInfo[] campos = CamposTabela(typeof(T));
+            string sql = string.Format("select * from \"{0}\"",nomeTabela);
 
-        internal void SalvarTabela(Tabela tabela)
+            DataTable dados = GetDataTable(sql);
+            if (dados != null) {
+                foreach (DataRow row in dados.Rows)
+                {
+                    var registro = new T();
+                    foreach (var campo in campos)
+                    {
+                        var valor = row[campo.Name.ToUpperInvariant()];
+                        if(valor is DBNull) valor = null;
+                        
+                        campo.SetValue(registro, Convert.ChangeType(valor,campo.GetType()));
+                    }
+                    retorno.Add(registro);
+                }
+            }
+            return retorno;
+        }
+
+        internal void SalvarTabela(object tabela)
         {
             var colunas = new List<string>();
             var valores = new List<object>();
-            foreach (var propriedade in tabela.GetCampos())
+            foreach (var propriedade in CamposTabela(tabela.GetType()))
             {
 
                 var valor = propriedade.GetValue(tabela);

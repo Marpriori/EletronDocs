@@ -1,5 +1,7 @@
 ﻿
+using Electron.Docs.Tables.Entidades.Listas;
 using System;
+using System.Collections.Generic;
 namespace Electron.Docs.Tables.Designer.Atributos
 {
     public class CampoTelaAttribute : Attribute
@@ -9,6 +11,7 @@ namespace Electron.Docs.Tables.Designer.Atributos
         public readonly TipoCampo TipoCampo;
         public int Tamanho = 300;
         public string Mascara = "";
+        public List<ItemLista> Lista = null;
 
         public CampoTelaAttribute(string aba, string rotulo, TipoCampo tipoCampo)
         {

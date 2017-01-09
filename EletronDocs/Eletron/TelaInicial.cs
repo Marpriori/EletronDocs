@@ -1,4 +1,5 @@
 ﻿using Electron.Docs.Tables;
+using Electron.Docs.Tables.Entidades.Configuracao;
 using Eletron.Configuracao;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace Eletron
 
         private void ListaEmpresas()
         {
+            var empresas = new Empresa().GetAll();
             //empresaComboBox.Items.AddRange()
         }
 
