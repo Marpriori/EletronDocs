@@ -54,6 +54,8 @@
     <Compile Include="Entidades\Configuracao\Empresa.Properties.cs" />
     <Compile Include="Entidades\ITabela.cs" />
     <Compile Include="Entidades\Listas\Estado.cs" />
+    <Compile Include="Entidades\Listas\ICampoLista.cs" />
+    <Compile Include="Entidades\Listas\ItemLista.cs" />
     <Compile Include="Entidades\Tabela.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

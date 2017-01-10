@@ -31,9 +31,17 @@ namespace Eletron.Configuracao
             if (empresaSelecionada != null)
             {
                 var telaEditar = new TelaCadastro(empresaSelecionada);
-                telaEditar.ShowDialog();
+                if (telaEditar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    ListarEmpresas();
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var telaEditar = new TelaCadastro(new Empresa());
+            if (telaEditar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                ListarEmpresas();
         }
     }
 }

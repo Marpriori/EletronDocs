@@ -6,22 +6,43 @@ using System.Threading.Tasks;
 
 namespace Electron.Docs.Tables.Entidades.Listas
 {
-    public class ItemLista
-    {
-        public object Valor { get; set; }
-        public string Descricao { get; set; }
 
-        public ItemLista(object valor, string descricao)
+    public class Estado : ICampoLista
+    {
+        public List<ItemLista> Lista { get; set; }
+        public Estado()
         {
-            Valor = valor;
-            Descricao = descricao;
-
+            Lista = new List<ItemLista>(){
+            new ItemLista("AC"),
+            new ItemLista("AL"),
+            new ItemLista("AM"),
+            new ItemLista("AP"),
+            new ItemLista("BA"),
+            new ItemLista("CE"),
+            new ItemLista("DF"),
+            new ItemLista("ES"),
+            new ItemLista("GO"),
+            new ItemLista("MA"),
+            new ItemLista("MG"),
+            new ItemLista("MS"),
+            new ItemLista("MT"),
+            new ItemLista("PA"),
+            new ItemLista("PB"),
+            new ItemLista("PE"),
+            new ItemLista("PI"),
+            new ItemLista("PR"),
+            new ItemLista("RJ"),
+            new ItemLista("RN"),
+            new ItemLista("RO"),
+            new ItemLista("RR"),
+            new ItemLista("RS"),
+            new ItemLista("SC"),
+            new ItemLista("SE"),
+            new ItemLista("SP"),
+            new ItemLista("TO")
+        };
         }
-    }
-
-    public class Listas
-    {
-        public static List<ItemLista> Estados = new List<ItemLista>(){
+        public static List<ItemLista> EstadosIbge = new List<ItemLista>(){
             new ItemLista(12, "AC"),
             new ItemLista(27, "AL"),
             new ItemLista(13, "AM"),

@@ -85,7 +85,7 @@
             // cTeToolStripMenuItem
             // 
             this.cTeToolStripMenuItem.Name = "cTeToolStripMenuItem";
-            this.cTeToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.cTeToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.cTeToolStripMenuItem.Text = "CTe";
             // 
             // cadastrosToolStripMenuItem
@@ -136,7 +136,7 @@
             // validarToolStripMenuItem
             // 
             this.validarToolStripMenuItem.Name = "validarToolStripMenuItem";
-            this.validarToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.validarToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.validarToolStripMenuItem.Text = "Validar";
             this.validarToolStripMenuItem.Click += new System.EventHandler(this.validarToolStripMenuItem_Click);
             // 

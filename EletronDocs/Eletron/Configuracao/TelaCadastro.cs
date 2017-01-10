@@ -4,6 +4,9 @@ using System.Windows.Forms;
 using Electron.Docs.Tables.Designer;
 using Eletron.Designer.Campos;
 using Electron.Docs.Tables.Entidades;
+using Electron.Docs.Tables.Designer.Atributos;
+using Electron.Docs.Tables.Entidades.Listas;
+using System.Collections.Generic;
 
 namespace Eletron.Configuracao
 {
@@ -19,6 +22,7 @@ namespace Eletron.Configuracao
 
         public void GerarCampos()
         {
+            tabControl1.TabPages.Clear();
             var campos = tabela.BuscarCamposTela();
             var abas = campos.Select(c => c.Atributo.Aba).Distinct();
 
@@ -84,10 +88,21 @@ namespace Eletron.Configuracao
         private Control GerarCampo(int linhaIndex, int totalSizeLinha, CamposTela campo, int tamanhoCampo)
         {
             Control txtCampo;
-            if (!string.IsNullOrWhiteSpace(campo.Atributo.Mascara))
-                txtCampo = new FieldDesktopMaskedTextBox(campo.Atributo.Mascara);
-            else
-                txtCampo = new FieldDesktopTextBox();
+            switch (campo.Atributo.TipoCampo)
+            {
+                case TipoCampo.LISTA:
+                    txtCampo = new FieldDesktopComboBox(
+                        ((ICampoLista)Activator.CreateInstance(campo.Atributo.Lista)).Lista,
+                        tabela.GetPropertyValue(campo.Nome));
+                    break;
+                default:
+                    if (!string.IsNullOrWhiteSpace(campo.Atributo.Mascara))
+                        txtCampo = new FieldDesktopMaskedTextBox(campo.Atributo.Mascara);
+                    else
+                        txtCampo = new FieldDesktopTextBox();
+                    break;
+            }
+
             txtCampo.Location = new System.Drawing.Point(totalSizeLinha, 25 + (linhaIndex * 40));
             txtCampo.Name = "field" + campo.Nome;
             txtCampo.Tag = campo.Atributo.Rotulo;
@@ -116,8 +131,14 @@ namespace Eletron.Configuracao
                         }
                     }
 
-
-                    if (campo is FieldDesktopTextBox || campo is FieldDesktopMaskedTextBox)
+                    var tiposCampos = new List<Type>() 
+                    {
+                        typeof(FieldDesktopTextBox), 
+                        typeof(FieldDesktopMaskedTextBox),
+                        typeof(FieldDesktopComboBox)
+ 
+                    };
+                    if (tiposCampos.Contains(campo.GetType()))
                     {
                         var campoTraduzido = campo as Control;
 
@@ -127,6 +148,14 @@ namespace Eletron.Configuracao
                 }
             }
             tabela.Save();
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
+
+        private void buttonCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+
+        }
+
     }
 }

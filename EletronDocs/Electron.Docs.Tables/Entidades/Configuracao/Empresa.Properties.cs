@@ -1,4 +1,5 @@
 ﻿using Electron.Docs.Tables.Designer.Atributos;
+using Electron.Docs.Tables.Entidades.Listas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +54,7 @@ namespace Electron.Docs.Tables.Entidades.Configuracao
         public string Municipio { get; set; }
 
         [CampoTabela]
-        [CampoTela(TABENDERECO, "Estado", Tamanho = 200)]
+        [CampoTela(TABENDERECO, "Estado", TipoCampo.LISTA, Tamanho = 200, Lista = typeof(Estado))]
         public string Estado { get; set; }
 
     }

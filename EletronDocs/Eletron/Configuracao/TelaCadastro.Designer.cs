@@ -32,9 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.buttonExcluir = new System.Windows.Forms.Button();
-            this.buttonAlterar = new System.Windows.Forms.Button();
-            this.buttonNovo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,9 +50,6 @@
             // 
             this.panel1.Controls.Add(this.buttonCancelar);
             this.panel1.Controls.Add(this.buttonSalvar);
-            this.panel1.Controls.Add(this.buttonExcluir);
-            this.panel1.Controls.Add(this.buttonAlterar);
-            this.panel1.Controls.Add(this.buttonNovo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -71,6 +65,7 @@
             this.buttonCancelar.TabIndex = 4;
             this.buttonCancelar.Text = "Cancelar";
             this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // buttonSalvar
             // 
@@ -83,41 +78,14 @@
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
-            // buttonExcluir
-            // 
-            this.buttonExcluir.Location = new System.Drawing.Point(134, 0);
-            this.buttonExcluir.Name = "buttonExcluir";
-            this.buttonExcluir.Size = new System.Drawing.Size(61, 23);
-            this.buttonExcluir.TabIndex = 2;
-            this.buttonExcluir.Text = "Excluir";
-            this.buttonExcluir.UseVisualStyleBackColor = true;
-            // 
-            // buttonAlterar
-            // 
-            this.buttonAlterar.Location = new System.Drawing.Point(67, 0);
-            this.buttonAlterar.Name = "buttonAlterar";
-            this.buttonAlterar.Size = new System.Drawing.Size(61, 23);
-            this.buttonAlterar.TabIndex = 1;
-            this.buttonAlterar.Text = "Alterar";
-            this.buttonAlterar.UseVisualStyleBackColor = true;
-            // 
-            // buttonNovo
-            // 
-            this.buttonNovo.Location = new System.Drawing.Point(0, 0);
-            this.buttonNovo.Name = "buttonNovo";
-            this.buttonNovo.Size = new System.Drawing.Size(61, 23);
-            this.buttonNovo.TabIndex = 0;
-            this.buttonNovo.Text = "Novo";
-            this.buttonNovo.UseVisualStyleBackColor = true;
-            // 
-            // EmpresaCadastro
+            // TelaCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 411);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
-            this.Name = "EmpresaCadastro";
+            this.Name = "TelaCadastro";
             this.Text = "EmpresaCadastro";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -128,9 +96,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonNovo;
-        private System.Windows.Forms.Button buttonExcluir;
-        private System.Windows.Forms.Button buttonAlterar;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonSalvar;
     }

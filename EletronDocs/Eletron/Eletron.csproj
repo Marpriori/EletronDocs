@@ -58,6 +58,9 @@
     <Compile Include="Configuracao\EmpresasLista.Designer.cs">
       <DependentUpon>EmpresasLista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Designer\Campos\FieldDesktopComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Designer\Campos\FieldDesktopMaskedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

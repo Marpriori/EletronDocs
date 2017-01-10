@@ -11,7 +11,7 @@ namespace Electron.Docs.Tables.Designer.Atributos
         public readonly TipoCampo TipoCampo;
         public int Tamanho = 300;
         public string Mascara = "";
-        public List<ItemLista> Lista = null;
+        public Type Lista;
 
         public CampoTelaAttribute(string aba, string rotulo, TipoCampo tipoCampo)
         {
