@@ -21,6 +21,7 @@ namespace Eletron.Configuracao
 
         private void ListarEmpresas()
         {
+
             dataGridView1.DataSource = new Empresa().GetAll();
             dataGridView1.Refresh();
         }
@@ -42,6 +43,25 @@ namespace Eletron.Configuracao
             var telaEditar = new TelaCadastro(new Empresa());
             if (telaEditar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 ListarEmpresas();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
+                e.RowIndex >= 0)
+            {
+                var data = dataGridView1.DataSource as List<Empresa>;
+
+                var registro = data[e.RowIndex];
+
+                if (MessageBox.Show("Excluir registro?", "Excluir", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    registro.Delete();
+                    ListarEmpresas();
+                }
+            }
         }
     }
 }

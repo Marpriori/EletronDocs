@@ -23,9 +23,12 @@ namespace Eletron.Designer.Campos
             ValueMember = "Valor";
             DisplayMember = "Descricao";
             DropDownStyle = ComboBoxStyle.DropDownList;
-            if (selectedValue != null)
-                SelectedIndex = FindStringExact(selectedValue as string);
-            
+
+            if (selectedValue == null) return;
+
+            var selecionado = lista.FirstOrDefault(item => item.Valor == selectedValue);
+            if(selecionado != null)
+                SelectedIndex = FindStringExact(selecionado.Descricao);
         }
     }
 }

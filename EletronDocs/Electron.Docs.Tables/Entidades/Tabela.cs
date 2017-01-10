@@ -62,6 +62,11 @@ namespace Electron.Docs.Tables.Entidades
             return Db.GetAll<T>();
         }
 
+        public void Delete()
+        {
+            Db.Delete(this);
+        }
+
 
 
         //public void SetPropertyValue(string p1, string p2)

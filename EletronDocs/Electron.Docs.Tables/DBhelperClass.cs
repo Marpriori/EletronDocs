@@ -129,6 +129,20 @@ namespace Electron.Docs.Tables
             return propriedades.ToArray();
         }
 
+        internal void Delete(ITabela tabela)
+        {
+            string nomeTabela = tabela.GetType().Name.ToUpperInvariant();
+            PropertyInfo[] campos = CamposTabela(tabela.GetType());
+
+            var campoID = campos.FirstOrDefault(r => r.Name.ToUpperInvariant() == "ID");
+
+            if (campoID != null)
+            {
+                string sql = string.Format("delete from \"{0}\" where id = ? ", nomeTabela);
+                ExecuteQuery(sql,new[]{campoID.GetValue(tabela)});
+            }
+        }
+
         internal List<T> GetAll<T>() where T : new()
         {
             var retorno = new List<T>();
